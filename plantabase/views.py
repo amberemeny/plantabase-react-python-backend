@@ -17,8 +17,12 @@ class PlantView(viewsets.ModelViewSet):
 
 class ObservationView(viewsets.ModelViewSet):
     serializer_class = ObservationSerializer
-    queryset = Observation.objects.all()
+    # queryset = Observation.objects.all()
     permission_classes = (IsAuthenticated, )
+
+    def get_queryset(self):
+        return Observation.objects.filter(plant=self.kwargs['plant_pk'])
+    # return self.request.user.accounts.all()
 
 class ScheduleView(viewsets.ModelViewSet):
     serializer_class = ScheduleSerializer
