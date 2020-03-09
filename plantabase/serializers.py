@@ -13,7 +13,7 @@ class PlantSerializer(serializers.ModelSerializer):
 class ObservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Observation
-        fields = ('plant', 'type', 'comment', 'date', 'time')
+        fields = ('plant', 'type', 'comment', 'date', 'time','id')
 
 class ScheduleSerializer(serializers.ModelSerializer):
     tasks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
